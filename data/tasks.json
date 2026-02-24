@@ -2,5 +2,13 @@
   {
     "title": "Implement CLI argparse",
     "complete": "Uncomplete"
+  },
+  {
+    "title": "Complete CLI tool",
+    "complete": "No"
+  },
+  {
+    "title": "Brush hair",
+    "complete": true
   }
 ]

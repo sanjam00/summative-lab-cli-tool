@@ -26,6 +26,13 @@ def main():
     user_controller.list_user()
 
   with TaskController(tasks_file) as task_controller:
+    # task_controller.add_task({"title": "Complete CLI tool", "complete": "No"})
+    # task_controller.add_task({"title": "Brush hair", "complete": False})
+
+    task_controller.list_task()
+
+    task_controller.complete_task({"title": "Brush hair"})
+
     task_controller.list_task()
 
   print(f"[END]")

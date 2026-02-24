@@ -17,10 +17,10 @@ class UsersController(BaseController):
   #   storage.save_data(self.filepath, [user.to_dict() for user in self.data])
 
   model_class = User
-  
+
   def add_user(self, args):
     if any(u.email == args["email"] for u in self.data):
-      print(f"User with email {args["email"]} already exists.")
+      print(f"User with email {args['email']} already exists.")
       return None
     
     #MVC - model, view, controller
