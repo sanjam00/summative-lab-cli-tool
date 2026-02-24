@@ -8,13 +8,21 @@ def main():
   tasks_file = storage.get_setting("tasks_file", "./data/tasks.json")
   projects_file = storage.get_setting("projects_file", "./data/projects.json")
 
-  print(f"users_file={users_file}")
-  print(f"tasks_file={tasks_file}")
-  print(f"projects_file={projects_file}")
+  # print(f"users_file={users_file}")
+  # print(f"tasks_file={tasks_file}")
+  # print(f"projects_file={projects_file}")
 
-  users_controller = UsersController(users_file)
-  user = users_controller.add_user({"name": "Sanaya", "email": "sanjam@gmail.com", })
-  print(user)
+  # users_controller = UsersController(users_file)
+  # users_controller.data = storage.load_data(users_file)
+  # user = users_controller.add_user({"name": "Sanaya", "email": "sanjam@gmail.com", })
+  # print(user)
+
+  # storage.save_data = (users_file, [user.to_dict() for user in users_controller.data] )
+
+  with UsersController(users_file) as user_controller:
+    # user_controller.add_user({"name": "Sanaya", "email": "sanjam@gmail.com"})
+
+    user_controller.list_user()
 
   print(f"[END]")
 
