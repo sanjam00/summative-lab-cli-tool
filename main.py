@@ -1,5 +1,6 @@
 from lib.utils import storage
 from lib.controllers.user_controller import UsersController
+from lib.controllers.task_controller import TaskController
 
 def main():
   print(f"[START]")
@@ -23,6 +24,9 @@ def main():
     # user_controller.add_user({"name": "Sanaya", "email": "sanjam@gmail.com"})
 
     user_controller.list_user()
+
+  with TaskController(tasks_file) as task_controller:
+    task_controller.list_task()
 
   print(f"[END]")
 
