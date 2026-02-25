@@ -1,10 +1,11 @@
 
 class Task:
-  def __init__(self, title, complete=False):
+  def __init__(self, title, project_title, complete=False):
     self.title = title
+    self.project_title = project_title
     self.complete = complete
 
-  def  to_dict(self):
+  def to_dict(self):
     return {
       "title": self.title,
       "complete": self.complete
