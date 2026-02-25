@@ -1,6 +1,7 @@
 from lib.utils import storage
 from lib.controllers.user_controller import UsersController
 from lib.controllers.task_controller import TaskController
+from lib.controllers.projects_controller import ProjectController
 
 def main():
   print(f"[START]")
@@ -9,31 +10,42 @@ def main():
   tasks_file = storage.get_setting("tasks_file", "./data/tasks.json")
   projects_file = storage.get_setting("projects_file", "./data/projects.json")
 
-  # print(f"users_file={users_file}")
-  # print(f"tasks_file={tasks_file}")
-  # print(f"projects_file={projects_file}")
-
-  # users_controller = UsersController(users_file)
-  # users_controller.data = storage.load_data(users_file)
-  # user = users_controller.add_user({"name": "Sanaya", "email": "sanjam@gmail.com", })
-  # print(user)
-
-  # storage.save_data = (users_file, [user.to_dict() for user in users_controller.data] )
-
   with UsersController(users_file) as user_controller:
-    # user_controller.add_user({"name": "Sanaya", "email": "sanjam@gmail.com"})
+    user_controller.add_user({"name": "James", "email": "james001@gmail.com"})
+    user_controller.add_user({"name": "Echo", "email": "echoechoecho3@gmail.com"})
 
     user_controller.list_user()
 
   with TaskController(tasks_file) as task_controller:
-    # task_controller.add_task({"title": "Complete CLI tool", "complete": "No"})
-    # task_controller.add_task({"title": "Brush hair", "complete": False})
+    
+    #this works:
+    # task_controller.add_task({"title": "Implement argparse",
+    #                           "project": "Summative Lab",
+    #                           "complete": False})
+    pass
 
-    task_controller.list_task()
+  with ProjectController(projects_file) as project_controller:
 
-    task_controller.complete_task({"title": "Brush hair"})
+    #works:
+    # project_controller.add_project({"title": "Summative Lab3", 
+    #                                 "description": "The final lab for the month, should include everything learned this month.", 
+    #                                 "due date": "2/25/2026", 
+    #                                 "assigned to": "Sanaya James", 
+    #                                 "complete": False})
 
-    task_controller.list_task()
+    project_controller.list_projects()
+
+    #works:
+    # project_controller.view_project({"title": "Summative Lab"}, task_controller)
+    # project_controller.view_project({"title": "Summative Lab2"}, task_controller)
+    # project_controller.view_project({"title": "Summative Lab3"}, task_controller)
+
+    #works:
+    # project_controller.assign_user({"project": "Summative Lab",
+    #                                "user": "James"})
+
+    #works:
+    project_controller.list_user_projects({"user": "Sanaya James"})
 
   print(f"[END]")
 

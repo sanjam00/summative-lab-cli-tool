@@ -7,15 +7,6 @@ class UsersController(BaseController):
     self.filepath = filepath
     self.data = []
   
-  # def __enter__(self):
-  #   # allow an object to be used with the with statement.
-  #   self.data = [User.from_dict(user) for user in storage.load_data(self.filepath)]
-  #   return self
-
-  # def __exit__(self, exc_type, exc, tb):
-  #   # allow an object to be used with the with statement.
-  #   storage.save_data(self.filepath, [user.to_dict() for user in self.data])
-
   model_class = User
 
   def add_user(self, args):

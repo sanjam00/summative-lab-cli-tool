@@ -9,11 +9,105 @@ class ProjectController(BaseController):
     
   model_class = Project
 
+  def add_project(self, args):
+    if any(p.title == args['title'] for p in self.data):
+      print(f"Project '{args['title']}' already exists")
+      return None
+
+    project = Project(
+            title=args["title"],
+            description=args["description"],
+            due_date=args["due date"],
+            assigned_to=args["assigned to"],
+            complete=False
+        )
+    
+    self.data.append(project)
+
+    print(f"Project '{project.title}' added successfully.")
+
+  def list_projects(self, args=None):
+    if not self.data:
+      print("No projects found.")
+      return
+
+    for project in self.data:
+      status = "✅" if project.complete else "❌"
+      print(f"[{status}] {project.title}")
+
+  def complete_project(self, args):
+    for project in self.data:
+      if project.title == args["title"]:
+        project.complete = True
+        print(f"Project '{project.title}' marked as complete.")
+        return project
+
+    print(f"Project '{args['title']}' not found.")
+    return None
+
+  def view_project(self, args, task_controller):
+    project = next((p for p in self.data if p.title == args["title"]), None)
+
+    if not project:
+      print(f"Project '{args['title']}' not found.")
+      return
+
+    print("\n--- Project Details ---")
+    print(f"Title: {project.title}")
+    print(f"Description: {project.description}")
+    print(f"Assigned To: {project.assigned_to}")
+    print(f"Due Date: {project.due_date}")
+    print(f"Completed: {'Yes' if project.complete else 'No'}")
+
+    project_tasks = [
+      t for t in task_controller.data
+      if t.project_title == project.title
+    ]
+
+    print("\nTasks:")
+    if not project_tasks:
+      print("  No tasks yet.")
+    else:
+      for task in project_tasks:
+        status = "✅" if task.complete else "❌"
+        print(f"  - [{status}] {task.title}")
+
+  def assign_user(self, args):
+    project = next((p for p in self.data if p.title == args["project"]), None)
+
+    if not project:
+      print(f"Project '{args['project']}' not found.")
+      return None
+
+    project.assigned_to = args["user"]
+
+    print(f"User '{args['user']}' assigned to project '{project.title}'.")
+    return project
+  
+  def list_user_projects(self, args):
+    user_name = args["user"]
+
+    user_projects = [
+      p for p in self.data
+      if p.assigned_to == user_name
+    ]
+
+    if not user_projects:
+      print(f"No projects assigned to '{user_name}'.")
+      return
+
+    print(f"Projects assigned to '{user_name}':")
+
+    for project in user_projects:
+      status = "✅" if project.complete else "❌"
+      print(f" - [{status}] {project.title}")
+
   """
   TO-DO:
-  add project
-  list projects
+  ✅ add project
+  ✅ list all projects
   assign a user to a project
   list all projects assigned to a user
-  view project details
+  ✅ view project details
+  ✅ mark project as complete
   """

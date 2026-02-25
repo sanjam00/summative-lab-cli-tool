@@ -1,1 +1,9 @@
-[]
+[
+  {
+    "title": "Summative Lab",
+    "description": "The final lab for the month, should include everything learned this month.",
+    "assigned to": "Sanaya James",
+    "due date": "2/25/2026",
+    "complete": false
+  }
+]

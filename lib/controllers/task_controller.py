@@ -10,27 +10,13 @@ class TaskController(BaseController):
 
   def add_task(self, args):
     # self.data is a list of all tasks
-    # if any(t.title == args["title"] for t in self.data):
-    #   print(f"Task with title '{args['title']}' already exists.")
-    #   return None
-
-    # task = Task(
-    #   title=args["title"],
-    #   complete=args["complete"]
-    # )
-
-    # self.data.append(task)
-
-    # print(f"Task '{task.title}' was added successfully")
-
-    # return task
-    if any(t.title == args["title"] for t in self.data):
+    if any( t.title == args["title"] and t.project_title == args["project"] for t in self.data):
         print(f"Task with title '{args['title']}' already exists.")
         return None
 
     task = Task(
         title=args["title"],
-        project_title=args["project"],   # ← REQUIRED
+        project_title=args["project"], 
         complete=args.get("complete", False)
     )
 
@@ -50,13 +36,10 @@ class TaskController(BaseController):
     return None
     
   def list_task(self, args):
-    # for task in self.data:
-    #   if task.complete == True:
-    #     print(f"{task.title} - Completed")
-    #   else:
-    #     print(f"{task.title} - Imcomplete")
-
-    project_search = args["project"]
+    project_search = args.get("project")
+    if not project_search:
+      print("Please specify a project.")
+      return
 
     project_tasks = [t for t in self.data if t.project_title == project_search]
 

@@ -1,14 +1,22 @@
 [
   {
     "title": "Implement CLI argparse",
-    "complete": false
+    "complete": false,
+    "project_title": null
   },
   {
     "title": "Complete CLI tool",
-    "complete": false
+    "complete": false,
+    "project_title": null
   },
   {
     "title": "Brush hair",
-    "complete": true
+    "complete": true,
+    "project_title": null
+  },
+  {
+    "title": "Implement argparse",
+    "complete": false,
+    "project_title": "Summative Lab"
   }
 ]

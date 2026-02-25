@@ -8,7 +8,8 @@ class Task:
   def to_dict(self):
     return {
       "title": self.title,
-      "complete": self.complete
+      "complete": self.complete,
+      "project_title": self.project_title
     }
   
   def __str__(self):
@@ -17,4 +18,8 @@ class Task:
   
   @classmethod
   def from_dict(cls, data):
-    return cls(title=data.get("title"), complete=data.get("complete"))
+    return cls(
+      title=data.get("title"), 
+      complete=data.get("complete"), 
+      project_title=data.get("project_title")
+      )
