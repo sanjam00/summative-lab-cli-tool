@@ -1,53 +1,55 @@
+import argparse
+from lib.utils.args import build_parser
 from lib.utils import storage
 from lib.controllers.user_controller import UsersController
 from lib.controllers.task_controller import TaskController
 from lib.controllers.projects_controller import ProjectController
 
 def main():
-  print(f"[START]")
+  parser = build_parser()
+  args = parser.parse_args()
 
   users_file = storage.get_setting("users_file", "./data/users.json")
   tasks_file = storage.get_setting("tasks_file", "./data/tasks.json")
   projects_file = storage.get_setting("projects_file", "./data/projects.json")
 
-  with UsersController(users_file) as user_controller:
-    user_controller.add_user({"name": "James", "email": "james001@gmail.com"})
-    user_controller.add_user({"name": "Echo", "email": "echoechoecho3@gmail.com"})
-
-    user_controller.list_user()
-
-  with TaskController(tasks_file) as task_controller:
+  with UsersController(users_file) as user_controller, \
+      ProjectController(projects_file) as project_controller, \
+      TaskController(tasks_file) as task_controller:
     
-    #this works:
-    # task_controller.add_task({"title": "Implement argparse",
-    #                           "project": "Summative Lab",
-    #                           "complete": False})
-    pass
+    if args.command == "add-user":
+      user_controller.add_user(vars(args))
+    
+    elif args.command == "list-users":
+      user_controller.list_users()
 
-  with ProjectController(projects_file) as project_controller:
+    elif args.command == "add-project":
+      project_controller.add_project(vars(args))
 
-    #works:
-    # project_controller.add_project({"title": "Summative Lab3", 
-    #                                 "description": "The final lab for the month, should include everything learned this month.", 
-    #                                 "due date": "2/25/2026", 
-    #                                 "assigned to": "Sanaya James", 
-    #                                 "complete": False})
+    elif args.command == "list-projects":
+      project_controller.list_projects()
+    
+    elif args.command == "assign-user":
+      project_controller.assign_user(vars(args))
+    
+    elif args.command == "list-user-projects":
+      project_controller.list_user_projects(vars(args))
 
-    project_controller.list_projects()
+    elif args.command == "view-project":
+      project_controller.view_project(vars(args), task_controller)
+    
+    elif args.command == "add-task":
+      task_controller.add_task(vars(args))
 
-    #works:
-    # project_controller.view_project({"title": "Summative Lab"}, task_controller)
-    # project_controller.view_project({"title": "Summative Lab2"}, task_controller)
-    # project_controller.view_project({"title": "Summative Lab3"}, task_controller)
+    elif args.command == "complete-task":
+      task_controller.complete_task(vars(args))
+    
+    elif args.command == "list-tasks":
+      task_controller.list_tasks(vars(args))
 
-    #works:
-    # project_controller.assign_user({"project": "Summative Lab",
-    #                                "user": "James"})
+    else:
+      parser.print_help()
 
-    #works:
-    project_controller.list_user_projects({"user": "Sanaya James"})
-
-  print(f"[END]")
 
 if __name__ == "__main__":
  main()

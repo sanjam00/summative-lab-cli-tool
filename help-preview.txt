@@ -1,0 +1,19 @@
+Usage: main.py [-h] {add-user,list-users,add-project,list-projects,assign-user,list-user-projects,view-project,add-task,complete-task,list-tasks} ...
+
+CLI Project Manager Tool
+
+Positional Arguments:
+  {add-user,list-users,add-project,list-projects,assign-user,list-user-projects,view-project,add-task,complete-task,list-tasks}
+    add-user            Add a new user
+    list-users          List all users
+    add-project         Add a new project
+    list-projects       List all projects
+    assign-user         Assign a user to a project
+    list-user-projects  List all projects assigned to a user
+    view-project        View project details
+    add-task            Add a new task to a project
+    complete-task       Mark a task as complete
+    list-tasks          List all tasks in a project
+
+Options:
+  -h, --help            show this help message and exit

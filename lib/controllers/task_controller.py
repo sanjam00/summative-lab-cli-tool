@@ -35,7 +35,7 @@ class TaskController(BaseController):
     print(f"{args['title']} not found in task list.")
     return None
     
-  def list_task(self, args):
+  def list_tasks(self, args):
     project_search = args.get("project")
     if not project_search:
       print("Please specify a project.")

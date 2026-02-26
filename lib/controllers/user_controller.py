@@ -22,6 +22,6 @@ class UsersController(BaseController):
 
     return user
 
-  def list_user(self):
+  def list_users(self):
     for user in self.data:
       print(f"[{user._id}] {user.name} <{user.email}>")
