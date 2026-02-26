@@ -106,8 +106,8 @@ class ProjectController(BaseController):
   TO-DO:
   ✅ add project
   ✅ list all projects
-  assign a user to a project
-  list all projects assigned to a user
+  ✅ assign a user to a project
+  ✅ list all projects assigned to a user
   ✅ view project details
   ✅ mark project as complete
   """
