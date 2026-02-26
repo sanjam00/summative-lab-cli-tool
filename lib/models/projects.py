@@ -12,8 +12,8 @@ class Project:
     return {
       "title": self.title,
       "description": self.description,
-      "assigned to": self.assigned_to,
-      "due date": self.due_date,
+      "assigned_to": self.assigned_to,
+      "due_date": self.due_date,
       "complete": self.complete,
     }
 
@@ -23,4 +23,4 @@ class Project:
   
   @classmethod
   def from_dict(cls, data):
-    return cls(title=data.get("title"), description=data.get("description"), assigned_to=data.get("assigned to"), due_date=data.get("due date"), complete=data.get("complete"))
+    return cls(title=data.get("title"), description=data.get("description"), assigned_to=data.get("assigned_to"), due_date=data.get("due_date"), complete=data.get("complete"))

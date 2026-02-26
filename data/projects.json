@@ -2,8 +2,15 @@
   {
     "title": "Summative Lab",
     "description": "The final lab for the month, should include everything learned this month.",
-    "assigned to": "Sanaya James",
-    "due date": "2/25/2026",
+    "assigned_to": null,
+    "due_date": null,
+    "complete": false
+  },
+  {
+    "title": "Final Project",
+    "description": "The final project for the semester",
+    "assigned_to": "Sanaya",
+    "due_date": "10/25/2026",
     "complete": false
   }
 ]

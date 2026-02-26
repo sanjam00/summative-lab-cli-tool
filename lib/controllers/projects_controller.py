@@ -17,8 +17,8 @@ class ProjectController(BaseController):
     project = Project(
             title=args["title"],
             description=args["description"],
-            due_date=args["due date"],
-            assigned_to=args["assigned to"],
+            due_date=args["due_date"],
+            assigned_to=args["assigned_to"],
             complete=False
         )
     
@@ -101,13 +101,3 @@ class ProjectController(BaseController):
     for project in user_projects:
       status = "✅" if project.complete else "❌"
       print(f" - [{status}] {project.title}")
-
-  """
-  TO-DO:
-  ✅ add project
-  ✅ list all projects
-  ✅ assign a user to a project
-  ✅ list all projects assigned to a user
-  ✅ view project details
-  ✅ mark project as complete
-  """
