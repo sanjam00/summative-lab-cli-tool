@@ -1,16 +1,16 @@
 [
   {
-    "title": "Summative Lab",
-    "description": "The final lab for the month, should include everything learned this month.",
-    "assigned_to": null,
-    "due_date": null,
+    "title": "Final Project",
+    "description": "The final project for the semester",
+    "assigned_to": "Kiki Jones",
+    "due_date": "10/25/2026",
     "complete": false
   },
   {
-    "title": "Final Project",
-    "description": "The final project for the semester",
-    "assigned_to": "Sanaya",
-    "due_date": "10/25/2026",
+    "title": "Read To Kill a Mockingbird",
+    "description": "read",
+    "assigned_to": "Joy James",
+    "due_date": "2/28/2026",
     "complete": false
   }
 ]

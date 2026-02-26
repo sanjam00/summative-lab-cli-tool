@@ -23,5 +23,9 @@ class UsersController(BaseController):
     return user
 
   def list_users(self):
+    if not self.data:
+      print(f"Users list is empty.")
+      return
+    
     for user in self.data:
       print(f"[{user._id}] {user.name} <{user.email}>")

@@ -30,7 +30,7 @@ def main():
       project_controller.list_projects()
     
     elif args.command == "assign-user":
-      project_controller.assign_user(vars(args))
+      project_controller.assign_user(vars(args), user_controller)
     
     elif args.command == "list-user-projects":
       project_controller.list_user_projects(vars(args))

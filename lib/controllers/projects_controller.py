@@ -72,16 +72,22 @@ class ProjectController(BaseController):
         status = "✅" if task.complete else "❌"
         print(f"  - [{status}] {task.title}")
 
-  def assign_user(self, args):
+  def assign_user(self, args, user_controller):
     project = next((p for p in self.data if p.title == args["project"]), None)
 
     if not project:
       print(f"Project '{args['project']}' not found.")
       return None
+    
+    user = next((u for u in user_controller.data if u.name == args["user"]), None)
 
-    project.assigned_to = args["user"]
+    if not user:
+      print(f"User '{args['user']}' not found.\nPlease enter a user that exists in the system. If the desired user does not exist, consider adding them with 'add-user'.")
+      return None
 
-    print(f"User '{args['user']}' assigned to project '{project.title}'.")
+    project.assigned_to = user.name
+
+    print(f"User '{user.name}' assigned to project '{project.title}'.")
     return project
   
   def list_user_projects(self, args):
